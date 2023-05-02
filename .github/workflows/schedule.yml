@@ -1,15 +1,13 @@
 name: Update gist
 on:
-  push:
-    branches:
-      - master
+  repository_dispatch:
+    types: [build-event]
   schedule:
     - cron: "0 0 * * *"
 jobs:
   update-gist:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - name: Update gist
         uses: maxam2017/productive-box@master
         env:
